@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+  /* antes era background: url(./assets/bg-mobile.jpg) no-repeat top center/cover;*/
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*height: 712px;*/
+  /*importante lembrar que não é necessário utilizar o elemento de altura - height - aqui, pois o conteúdo colocado na página, dentro da margem, a ela se amoldará 
+  */
+  /*border: 1px solid red;*/
+  /*
+  margin-right: auto;
+  margin-left: auto;
+  */
+  margin: auto;
+
+  margin-top: 56px; /*padding-top: 56px ou margin-top: 56px são as formas de chegar ao mesmo resultado.
+  OBS: O margin é o espaço entre um elemento e seus vizinhos, enquanto o padding é o espaço entre o conteúdo do elemento e sua borda*/
+  margin: 56px auto 0px auto;
+  /*  o elemento margin engloba todos os margins de todas as direções (margin-top, margin-right, margin-bottom e margin-left). Importante, se for usa-los separadamente, respeitar a ordem "top, right, left, bottom" (sentido horário):
+  margin-top: 
+  margin-right: 
+  margin-bottom:
+  margin-left:
+  Caso utilize um único elemento margin para fazer menção a todas as direções, deve-se seguir a ordem top, right, bottom, left, em caso de 4 valores diferentes. Neste caso, o "56px" vale para o top, o primeiro "auto" vale para o right, "0px" vale para o bottom, e o segundo "auto vale para o left. 
+  Caso se tratassem de 3 variáveis, a exemplo: "margin: 56px auto 0 px", o "56px" valeria para o top, "auto" para valeria para right e left (pois são lados opostos), e "0px" valeria para o bottom.
+  COMPLICADO MAS SE USAR O BOM SENSO FAZ SENTIDO.  
+  */
+  padding: 0 24px;
+}
+
+/*profile*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+/* Aqui, o elemento profile, com text-align dentro dele, serve para que os textos dentro da margem fiquem cetralizados - ex: o texto "@maykebrito" abaixo da foto de perfil. 
+  */
+
+#profile img {
+  /*display: block;*/
+  width: 112px;
+  /*margin: auto;*/
+  /*observação: img é elemento inline, logo, margin não vai alterar sua posição. é preciso transformar em o display em block primeiro, para dps dar o comando de margin. Dessa forma, a foto ficará centralizada*/
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 16px;
+  /*desnecessário, pois 16px é o padrão*/
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+  /*o switch tem o display em block. Logo, para centratlizar o switch, faz-se necessário usar o comando margin: 4px (cima e baixo) auto*/
+
+  }
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  /* antes era background: url(./assets/moon-stars.svg) no-repeat center;*/
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%; /*primeiro, retiro os 50% no translateY, e depois coloco 50% no top*/
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+right: 0;
+left: initial;
+}
+
+#switch span {
+  /*é o track*/
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* links */
+ul {
+  list-style: none;
+  /* serve para retirar os pontos de cada item na lista*/
+  display: flex;
+  /* display: flex serve para que os elementos da lista se encaixem entre si de uma maneira flexível*/
+  flex-direction: column;
+  /* flex-direction: column serve para que os elemenos flexíves fiquem um embaixo do outro, formando uma coluna*/
+  gap: 16px;
+  /* serve para especificar o espaço entre cada um dos itens numa lista*/
+
+  padding: 24px 0;
+  /*Aplica-se o padding aqui pois no botão mais acima e no mais abaixo há uma distância de 24 cm de altura para cima e para baixo, respectivamente*/
+}
+
+ul li a {
+  /*border: 1px solid red;*/
+
+  display: flex;
+  align-items: center;
+  /* serve para que os itens da lista fiquem no eixo central da linha "main (uma linha imaginária que corta  de um lado ao outro no espaço de cada item)*/
+  justify-content: center;
+  /* faz com que os itens da lista sejam centralizados*/
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  /* antes era background rgba (255, 255, 255, 0.1) - serve para que o fundo de cada elemento da limnha tenha uma cor de fundo. rgba significa "red, green, blue, alpha"*/
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  /* border-radius significa arredondamento de borda*/
+  backdrop-filter: blur(4px);
+  /*este comando embaça sutilmente*/
+  -webkit-backdrop-filter: blur(4px);
+  /*para que o comando backdrop-filter funcione em algumas versões de navegadores/browsers, a exemplo do safari9, deve-se colocar o prefixo -webkit. ISSO PODE SER OBSERVADO NO SITE CANIUSE.COM*/
+  text-decoration: none;
+  /*o comando text-decoration serve para que a fonte fique com underline, overline, riscada (line-through), etc. Neste caso, escolhemos que fique sem nenhuma especificidade, por isso usamos "none"*/
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+/*pseudo-selector*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  /*antes era background: rgba(255, 255, 255, 0.05)*/
+  border: 1.5px solid var(--text-color);
+  /* o hover é um pseudo-seletor, ou seja, quando passar o mouse em cima de um dos elementos da linha, ocorrerá uma leve mudança na cor de fundo e da borda, já que usamos os comandos background e border. Além disso, para que ocorra uma transição suave dessas cores, utiliza-se o elemento TRANSITION, como feito acima, e os 0.2s é o tempo que leva para ocorrer essa transição*/
+}
+
+/*social-links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+  /*utilizado para alinhar os ícones ao meio*/
+  /*gap: 32px; acabou não sendo mais necessário usar esse gap, após começar a fazer o hover*/
+  /*para especificar a distância entre cada ícone.
+  Antes, estava como 16px, mas era somente referente ao gap normal dele, mas deve ser somado ainda o espaço dentro do próprio ícone (7.25+8.75=16px), totalizando 32px*/
+
+  padding: 24px 0;
+
+  font-size: 24px;
+  /*antes eram 40px. Entretanto, nesses 40px estavam contando 16px das bordas - largura e altura. Logo, 40-16= 24px como sendo o tamanho dos ícones*/
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0, 2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+  /*
+  Antes era background: rgba(255, 255, 255, 0.2);
+  padding: 16px; esse comando foi colocado no "#social-links a"*/
+  /*border-radius: 50%; enquanto fazia o hover, o professor achou melhor colocar esse comando no "#social-links a", pois a transição ficou melhor com ele lá - se ficasse aqui, ia intercalar entre uma bolinha e um quadrado ao redor dos ícones, o que deixa estranho*/
+  /*border-radius: 50% fez o pseudo-seletor aparecendo uma bolinha ao redor do ícone, ao invés de um quadrado.
+  OBS: PERCEBE-SE QUE OS ÍCONES NÃO FICAM ALINHADOS AO CENTRO DA BOLINHA, RAZÃO PELA QUAL USA-SE O COMANDO "#SOCIAL-LINKS A" ACIMA DESTE, COM DISPLAY:FLEX, ALIGH-ITEMS:CENTER E JUSTIFY-CONTENT:CENTER*/
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
