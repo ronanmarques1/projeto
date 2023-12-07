@@ -43,7 +43,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /*height: 712px;*/
   /*importante lembrar que não é necessário utilizar o elemento de altura - height - aqui, pois o conteúdo colocado na página, dentro da margem, a ela se amoldará 
   */
